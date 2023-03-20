@@ -1,0 +1,509 @@
+[
+  {
+    "difficultyid": 0,
+    "difficultytype": "Easy",
+    "elementlist": [
+      {
+        "elementid": 0,
+        "elementname": "Hydrogen",
+        "elementcode": "H",
+        "elementnnumber": 1,
+        "elementhints": [
+          "It belongs to the group of non-metals, it is mostly gaseous. It is the most abundant element in the atmosphere.",
+          "It does not belong to any group (metals, non-metals and semi-metals).",
+          "Atomic number 1."
+        ]
+      },
+      {
+        "elementid": 1,
+        "elementname": "Potassium",
+        "elementcode": "K",
+        "elementnnumber": 19,
+        "elementhints": [
+          "It belongs to the group of Alkali metals, it is solid.",
+          "It is essential for the functioning of all living cells and is necessary for normal nerve transmission and is found in a banana, among other things.",
+          "Atomic number 19."
+        ]
+      },
+      {
+        "elementid": 2,
+        "elementname": "Buyer",
+        "elementcode": "Cu",
+        "elementnnumber": 29,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1084 °C.",
+          "It is a malleable metal and easy to deform, used in making wires, coins and video cards.",
+          "Atomic number 29."
+        ]
+      },
+      {
+        "elementid": 3,
+        "elementname": "Silicon",
+        "elementcode": "Si",
+        "elementnnumber": 14,
+        "elementhints": [
+          "It belongs to the group of metalloids (semi metals).",
+          "In crystalline form, it has a metallic appearance and a gray color. It is used in computer chips as a wafer on which the chip's components are fabricated.",
+          "Atomic number 14."
+        ]
+      },
+      {
+        "elementid": 4,
+        "elementname": "Helium",
+        "elementcode": "He",
+        "elementnnumber": 2,
+        "elementhints": [
+          "It belongs to the group of noble gases, it is gaseous.",
+          "It is a very light gas that is used as a filler for balloons and airships.",
+          "Atomic number 2."
+        ]
+      },
+      {
+        "elementid": 5,
+        "elementname": "Carbon",
+        "elementcode": "C",
+        "elementnnumber": 6,
+        "elementhints": [
+          "It belongs to the group of non-metals, it is mostly solid.",
+          "It occurs in nature in various forms of allotropes such as diamond and graphite, it resides in all organic life forms and is the basis of organic chemistry.",
+          "Atomic number 6."
+        ]
+      },
+      {
+        "elementid": 6,
+        "elementname": "Oxygen",
+        "elementcode": "O",
+        "elementnnumber": 8,
+        "elementhints": [
+          "Under normal conditions, it is colorless, odorless and tasteless.",
+          "It is not a metal, is produced in photosynthesis.",
+          "Atomic number 8."
+        ]
+      },
+      {
+        "elementid": 7,
+        "elementname": "Nitrogen",
+        "elementcode": "N",
+        "elementnnumber": 7,
+        "elementhints": [
+          "It's not a metal, solid or liquid, it's Gaseous.",
+          "The Earth's atmosphere consists of 78% of it.",
+          "Atomic number 7."
+        ]
+      },
+      {
+        "elementid": 8,
+        "elementname": "Titanium",
+        "elementcode": "Ti",
+        "elementnnumber": 22,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1668 °C.",
+          "It occurs naturally in the human body, in plants, in seawater, on the moon, in meteors, and in the sun and other stars. The element is only found bound with other elements, not free in nature in its pure state.",
+          "Atomic number 22."
+        ]
+      },
+      {
+        "elementid": 9,
+        "elementname": "Chrome",
+        "elementcode": "Cr",
+        "elementnnumber": 24,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1907 °C.",
+          "It is a hard, shiny, gunmetal gray metal. Chrome can be highly polished. Like many transition metals, it has a high melting point and a high boiling point. Stainless steel is hard and resistant to corrosion due to the addition of chromium.",
+          "Atomic number 24."
+        ]
+      },
+      {
+        "elementid": 10,
+        "elementname": "Silver",
+        "elementcode": "Ag",
+        "elementnnumber": 47,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 961 °C.",
+          "It is one of the first five metals ever discovered. Objects have been found dating back to 4000 BC. it was the first metal to be used as currency, and in ancient Egypt it was valued higher than gold!",
+          "Atomic number 47."
+        ]
+      },
+      {
+        "elementid": 11,
+        "elementname": "Gold",
+        "elementcode": "Au",
+        "elementnnumber": 79,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1064 °C.",
+          "It is one of the densest of all metals. It is a good conductor of heat and electricity.",
+          "Atomic number 79."
+        ]
+      },
+      {
+        "elementid": 12,
+        "elementname": "Platinum",
+        "elementcode": "Pt",
+        "elementnnumber": 29,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1768 °C.",
+          "It is soft and malleable and has a high melting point and good resistance to corrosion and chemical attack.",
+          "Atomic number 29."
+        ]
+      },
+      {
+        "elementid": 13,
+        "elementname": "Mercury",
+        "elementcode": "Hg",
+        "elementnnumber": 80,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly liquid, with a boiling point of 356 °C.",
+          "It is the only metal on Earth that is liquid at room temperature. The liquid form is so slippery that it will fall off your skin if you try to hold it. It's so heavy that 2 tablespoons of it weigh about a pound!",
+          "Atomic number 80."
+        ]
+      },
+      {
+        "elementid": 14,
+        "elementname": "Barium",
+        "elementcode": "Ba",
+        "elementnnumber": 56,
+        "elementhints": [
+          "It is a metal and in the alkali metal group, it is mostly solid, with a melting point of 841 °C.",
+          "It is poisonous, as are the water- or acid-soluble compounds. It only occurs in combination with other elements.",
+          "Atomic number 56."
+        ]
+      }
+    ]
+  },
+  {
+    "difficultyid": 1,
+    "difficultytype": "Hard",
+    "elementlist": [
+      {
+        "elementid": 0,
+        "elementname": "Hydrogen",
+        "elementcode": "H",
+        "elementnnumber": 1,
+        "elementhints": [
+          "It belongs to the group of non-metals, it is mostly gaseous. It is the most abundant element in the atmosphere.",
+          "It does not belong to any group (metals, non-metals and semi-metals).",
+          "Atomic number 1."
+        ]
+      },
+      {
+        "elementid": 1,
+        "elementname": "Potassium",
+        "elementcode": "K",
+        "elementnnumber": 19,
+        "elementhints": [
+          "It belongs to the group of Alkali metals, it is solid.",
+          "It is essential for the functioning of all living cells and is necessary for normal nerve transmission and is found in a banana, among other things.",
+          "Atomic number 19."
+        ]
+      },
+      {
+        "elementid": 2,
+        "elementname": "Buyer",
+        "elementcode": "Cu",
+        "elementnnumber": 29,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1084 °C.",
+          "It is a malleable metal and easy to deform, used in making wires, coins and video cards.",
+          "Atomic number 29."
+        ]
+      },
+      {
+        "elementid": 3,
+        "elementname": "Silicon",
+        "elementcode": "Si",
+        "elementnnumber": 14,
+        "elementhints": [
+          "It belongs to the group of metalloids (semi metals).",
+          "In crystalline form, it has a metallic appearance and a gray color. It is used in computer chips as a wafer on which the chip's components are fabricated.",
+          "Atomic number 14."
+        ]
+      },
+      {
+        "elementid": 4,
+        "elementname": "Helium",
+        "elementcode": "He",
+        "elementnnumber": 2,
+        "elementhints": [
+          "It belongs to the group of noble gases, it is gaseous.",
+          "It is a very light gas that is used as a filler for balloons and airships.",
+          "Atomic number 2."
+        ]
+      },
+      {
+        "elementid": 5,
+        "elementname": "Carbon",
+        "elementcode": "C",
+        "elementnnumber": 6,
+        "elementhints": [
+          "It belongs to the group of non-metals, it is mostly solid.",
+          "It occurs in nature in various forms of allotropes such as diamond and graphite, it resides in all organic life forms and is the basis of organic chemistry.",
+          "Atomic number 6."
+        ]
+      },
+      {
+        "elementid": 6,
+        "elementname": "Oxygen",
+        "elementcode": "O",
+        "elementnnumber": 8,
+        "elementhints": [
+          "Under normal conditions, it is colorless, odorless and tasteless.",
+          "It is not a metal, is produced in photosynthesis.",
+          "Atomic number 8."
+        ]
+      },
+      {
+        "elementid": 7,
+        "elementname": "Nitrogen",
+        "elementcode": "N",
+        "elementnnumber": 7,
+        "elementhints": [
+          "It's not a metal, solid or liquid, it's Gaseous.",
+          "The Earth's atmosphere consists of 78% of it.",
+          "Atomic number 7."
+        ]
+      },
+      {
+        "elementid": 8,
+        "elementname": "Titanium",
+        "elementcode": "Ti",
+        "elementnnumber": 22,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1668 °C.",
+          "It occurs naturally in the human body, in plants, in seawater, on the moon, in meteors, and in the sun and other stars. The element is only found bound with other elements, not free in nature in its pure state.",
+          "Atomic number 22."
+        ]
+      },
+      {
+        "elementid": 9,
+        "elementname": "Chrome",
+        "elementcode": "Cr",
+        "elementnnumber": 24,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1907 °C.",
+          "It is a hard, shiny, gunmetal gray metal. Chrome can be highly polished. Like many transition metals, it has a high melting point and a high boiling point. Stainless steel is hard and resistant to corrosion due to the addition of chromium.",
+          "Atomic number 24."
+        ]
+      },
+      {
+        "elementid": 10,
+        "elementname": "Silver",
+        "elementcode": "Ag",
+        "elementnnumber": 47,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 961 °C.",
+          "It is one of the first five metals ever discovered. Objects have been found dating back to 4000 BC. it was the first metal to be used as currency, and in ancient Egypt it was valued higher than gold!",
+          "Atomic number 47."
+        ]
+      },
+      {
+        "elementid": 11,
+        "elementname": "Gold",
+        "elementcode": "Au",
+        "elementnnumber": 79,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1064 °C.",
+          "It is one of the densest of all metals. It is a good conductor of heat and electricity.",
+          "Atomic number 79."
+        ]
+      },
+      {
+        "elementid": 12,
+        "elementname": "Platinum",
+        "elementcode": "Pt",
+        "elementnnumber": 29,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 1768 °C.",
+          "It is soft and malleable and has a high melting point and good resistance to corrosion and chemical attack.",
+          "Atomic number 29."
+        ]
+      },
+      {
+        "elementid": 13,
+        "elementname": "Mercury",
+        "elementcode": "Hg",
+        "elementnnumber": 80,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly liquid, with a boiling point of 356 °C.",
+          "It is the only metal on Earth that is liquid at room temperature. The liquid form is so slippery that it will fall off your skin if you try to hold it. It's so heavy that 2 tablespoons of it weigh about a pound!",
+          "Atomic number 80."
+        ]
+      },
+      {
+        "elementid": 14,
+        "elementname": "Barium",
+        "elementcode": "Ba",
+        "elementnnumber": 56,
+        "elementhints": [
+          "It is a metal and in the alkali metal group, it is mostly solid, with a melting point of 841 °C.",
+          "It is poisonous, as are the water- or acid-soluble compounds. It only occurs in combination with other elements.",
+          "Atomic number 56."
+        ]
+      },
+      {
+        "elementid": 15,
+        "elementname": "Calcium",
+        "elementcode": "Ca",
+        "elementnnumber": 20,
+        "elementhints": [
+          "It is a metal and in the alkali metal group, it is mostly solid, with a melting point of 730 °C.",
+          "The average human contains about 1 kg of it, 99% of which is stored in our bones. It is the 5th most abundant element in the Earth's crust.",
+          "Atomic number 20."
+        ]
+      },
+      {
+        "elementid": 16,
+        "elementname": "Sodium",
+        "elementcode": "Na",
+        "elementnnumber": 11,
+        "elementhints": [
+          "It belongs to the group of alkali metals, it is solid.",
+          "It is a very soft silvery white metal. Sodium is the most abundant alkali metal and the sixth most abundant element on Earth.",
+          "Atomic number 11."
+        ]
+      },
+      {
+        "elementid": 17,
+        "elementname": "Tin",
+        "elementcode": "Sn",
+        "elementnnumber": 50,
+        "elementhints": [
+          "It is a metal and in the Main Group metal group, it is mostly solid, with a melting point of 231 °C.",
+          "It is a silvery white, soft, malleable metal that can be polished to a lustrous shine. The microstructure is highly crystalline.",
+          "Atomic number 50."
+        ]
+      },
+      {
+        "elementid": 18,
+        "elementname": "Iodine",
+        "elementcode": "I",
+        "elementnnumber": 53,
+        "elementhints": [
+          "Belongs to the nonmetal group, it is mostly solid, with a melting point of 113 °C.",
+          "It is a trace element naturally present in some foods, added to some types of salt and available as a dietary supplement.",
+          "Atomic number 53."
+        ]
+      },
+      {
+        "elementid": 19,
+        "elementname": "Lead",
+        "elementcode": "Pb",
+        "elementnnumber": 82,
+        "elementhints": [
+          "It is a metal and in the Main Group metal group, it is mostly solid, with a melting point of 327 °C.",
+          "It is a soft, malleable, ductile and dense metal element. It is mainly extracted from the mineral galena and is found in ores that also contain zinc, silver and copper.",
+          "Atomic number 82."
+        ]
+      },
+      {
+        "elementid": 20,
+        "elementname": "Lithium",
+        "elementcode": "Li",
+        "elementnnumber": 3,
+        "elementhints": [
+          "It belongs to the group of Alkali metals, it is solid.",
+          "Its compounds enable clean energy and transportation through rechargeable batteries for electric vehicles and electronic products and as key ingredients in low-melting glasses and lubricants.",
+          "Atomic number 3."
+        ]
+      },
+      {
+        "elementid": 21,
+        "elementname": "Neon",
+        "elementcode": "Ne",
+        "elementnnumber": 10,
+        "elementhints": [
+          "It belongs to the group of Alkali metals, it is mostly gaseous.",
+          "Colorless, odorless, tasteless and lighter than air, neon gas occurs in minute quantities in the Earth's atmosphere and is trapped in the rocks of the Earth's crust.",
+          "Atomic number 10."
+        ]
+      },
+      {
+        "elementid": 22,
+        "elementname": "Chlorine",
+        "elementcode": "Cl",
+        "elementnnumber": 17,
+        "elementhints": [
+          "It belongs to the group of non-metals, it is mostly gaseous.",
+          "It can be pressurized and cooled to turn it into a liquid. When its liquid form is released, it quickly turns into a gas that stays close to the ground and spreads quickly. A gas can be recognized by its sharp, irritating smell, which resembles the smell of bleach.",
+          "Atomic number 17."
+        ]
+      },
+      {
+        "elementid": 23,
+        "elementname": "Plutonium",
+        "elementcode": "Pu",
+        "elementnnumber": 94,
+        "elementhints": [
+          "It is a metal and in the Actinide group, it is mostly solid.",
+          "It is the most important transuranium element due to its use as a fuel in certain types of nuclear reactors and as an ingredient in nuclear weapons. it is a silvery metal that turns yellow in the air.",
+          "Atomic number 94."
+        ]
+      },
+      {
+        "elementid": 24,
+        "elementname": "Uranium",
+        "elementcode": "U",
+        "elementnnumber": 92,
+        "elementhints": [
+          "It is a metal and in the Actinide group, it is mostly solid.",
+          "It has the highest atomic weight of all naturally occurring elements. it occurs naturally in low concentrations in soil, rock and water.",
+          "Atomic number 92."
+        ]
+      },
+      {
+        "elementid": 25,
+        "elementname": "Iron",
+        "elementcode": "Fe",
+        "elementnnumber": 26,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a boiling point of 1538 °C.",
+          "The heaviest element formed in the cores of stars. Elements heavier than this can only be created when high-mass stars explode. The Latin name for it is ferrum.",
+          "Atomic number 26."
+        ]
+      },
+      {
+        "elementid": 26,
+        "elementname": "Neptunium",
+        "elementcode": "Np",
+        "elementnnumber": 93,
+        "elementhints": [
+          "It is a metal and in the Actinide group, it is mostly solid.",
+          "It is the first transuranium element produced synthetically and the first actinide series transuranium element to be discovered.",
+          "Atomic number 93."
+        ]
+      },
+      {
+        "elementid": 27,
+        "elementname": "Nickel",
+        "elementcode": "Ni",
+        "elementnnumber": 28,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a boiling point of 1455 °C.",
+          "It is 100 times more concentrated under the Earth's crust than in it. In fact, it is believed to be the second most abundant element in the Earth's inner core, with iron being first by a large margin.",
+          "Atomic number 28."
+        ]
+      },
+      {
+        "elementid": 28,
+        "elementname": "Iridium",
+        "elementcode": "Ir",
+        "elementnnumber": 77,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a boiling point of 2,466 °C.",
+          "It is the most corrosion resistant element on the periodic table. It also has the highest density of all elements. Because it is resistant to corrosion, it is used to set standards in weights and measures.",
+          "Atomic number 77."
+        ]
+      },
+      {
+        "elementid": 29,
+        "elementname": "Zinc",
+        "elementcode": "Zn",
+        "elementnnumber": 30,
+        "elementhints": [
+          "It is a metal and in the Transition Metal group, it is mostly solid, with a melting point of 420 °C.",
+          "It is currently the 4th most consumed metal in the world after iron, aluminum and copper. it is a natural component of the earth and inherent in our environment.",
+          "Atomic number 30."
+        ]
+      }
+    ]
+  }
+]
