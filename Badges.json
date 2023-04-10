@@ -167,6 +167,202 @@
                 "water": "false",
                 "E4": 0
             }
+        },
+        {
+            "name": "Vyoru#0001",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "false",
+                "E4": 0
+            }
+        },
+        {
+            "name": "boogiefan87#8787",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "false",
+                "E4": 0
+            }
+        },
+        {
+            "name": "boogiefan87#8787",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "true",
+                "water": "false",
+                "E4": 0
+            }
+        },
+        {
+            "name": "boogiefan87#8787",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "boogiefan87#8787",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "true",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "false",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "true",
+                "grass": "false",
+                "poison": "false",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "true",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Donler#1864",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "false",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "true",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "true",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "false",
+                "electric": "true",
+                "fairy": "false",
+                "fighting": "true",
+                "fire": "true",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "true",
+                "electric": "true",
+                "fairy": "false",
+                "fighting": "true",
+                "fire": "true",
+                "grass": "false",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
+        },
+        {
+            "name": "Francisco69#6966",
+            "userstats": {
+                "dragon": "true",
+                "electric": "true",
+                "fairy": "false",
+                "fighting": "true",
+                "fire": "true",
+                "grass": "true",
+                "poison": "true",
+                "water": "true",
+                "E4": 0
+            }
         }
     ]
 }
