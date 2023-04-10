@@ -11,6 +11,7 @@ def run_discord_bot():
 
     @client.event
     async def on_ready():
+        await client.get_channel(914606748743127072).send("BOT BACK UP AND RUNNING!")
         print(f'{client.user} is now running!')
 
     @client.event
