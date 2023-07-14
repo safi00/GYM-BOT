@@ -11,24 +11,22 @@ def run_discord_bot():
 
     @client.event
     async def on_ready():
-        await client.get_channel(914606748743127072).send("BOT BACK UP AND RUNNING!")
+        # 914606748743127072 gym-challenge   | BOT BACK UP AND RUNNING!
+        await client.get_channel(1070373326440120361).send(
+            "!join | ``!give <@98475932624371712> poison badge | !score <@98475932624371712>``")
         print(f'{client.user} is now running!')
+        print(" ")
 
     @client.event
     async def on_message(message):
         # Make sure bot doesn't get stuck in an infinite loop
         if message.author == client.user:
             return
-        # Get data about the user
-        username = str(message.author)
+
         user_message = str(message.content)
         channel = str(message.channel)
 
-        if channel == 'gym-challenge' or channel == 'test' or channel == 'gym-leader':
-            print(f"{message.author} said: '{message}' ({message.content})")
-
-            # Debug printing
-            print(f"{username} said: '{user_message}' ({channel})")
+        if channelCheck(channel):
             # If the user message contains a '?' in front of the text, it becomes a private message
             if user_message != "":
                 if user_message[0] == '?':
@@ -37,6 +35,7 @@ def run_discord_bot():
                     await send_message(message, is_private=False)
         else:
             return
+
     # Remember to run your bot with your personal TOKEN
     client.run(TOKEN)
 
@@ -48,174 +47,151 @@ async def send_message(message, is_private):
         await message.author.send(response) if is_private else await message.channel.send(response)
     except Exception as e:
         exception_type, exception_object, exception_traceback = sys.exc_info()
-        filename = exception_traceback.tb_frame.f_code.co_filename
-        line_number = exception_traceback.tb_lineno
+        # filename = exception_traceback.tb_frame.f_code.co_filename
+        # line_number = exception_traceback.tb_lineno
+        print(f'error? (Might just be a RCG message): {e} |  Exception type: {exception_type}\n')
+        # print("this is the main error: "  e + "Exception type: ", exception_type)
+        # print("File name: ", filename)
+        # print("Line number: ", line_number)
 
-        print("this is the main error: ", e)
-        print("Exception type: ", exception_type)
-        print("File name: ", filename)
-        print("Line number: ", line_number)
 
-
-def handle_response(author, message, channel) -> str:
-    lowerMSG = str(message.lower())
+def handle_response(author, messageContent, channel) -> str:
+    lowerMSG = str(messageContent.lower())
     testchannel = str(channel)
-    msglist = convert(str(message.lower()))
-    returnmsg = ""
-
+    msglist = convert(str(messageContent.lower()))
+    if lowerMSG == 'ping':
+        return author.mention
+    if lowerMSG == 'coin':
+        if (random.randint(1, 2)) == 1:
+            return "tails"
+        else:
+            return "heads"
+    if lowerMSG == 'bot!':
+        return "HI! How can i help you?!\nAlso <@350990937587056640> is a beeg nerd"
     if testchannel == 'gym-challenge' or testchannel == 'test' or testchannel == 'gym-leader':
-        if lowerMSG == 'ping':
-            return author.mention
-        if lowerMSG == 'coin':
-            if (random.randint(1, 2)) == 1:
-                returnmsg = "heads"
-            else:
-                returnmsg = "heads"
         if msglist[0] == '!':
-            returnmsg = Exclamation(author, message)
+            logUserMessage(author, messageContent, testchannel)
+            return Exclamation(author, messageContent)
+    if testchannel == 'raid-chat-general':
+        if msglist[0] == '!':
+            splitmsg = lowerMSG.split()
+            if splitmsg[0] == '!ping':
+                logUserMessage(author, messageContent, testchannel)
+                return "<@" + splitmsg[1] + ">"
 
-    return returnmsg
 
-
-def Exclamation(author, message):
+def Exclamation(msgAuthor, message):
     lowerMSG = str(message.lower())
-    returnmsg = "`INCORRECT`"
-    boolcheck = False
-    if lowerMSG[1] == 'g':
-        if lowerMSG[2] == 'i':
-            if lowerMSG[3] == 'v':
-                if lowerMSG[4] == 'e':
-                    if lowerMSG[5] == ' ':
-                        for leader in currentleaders():
-                            if str(author) == str(leader):
-                                boolcheck = True
-                        if boolcheck:
-                            returnmsg = GiveCommand(message, GetAllChallengersFromJson())
-                        else:
-                            returnmsg = "`You are not Authorized to use this command!`\n`***Please ping a leader or " \
-                                        "e4 to give ya the badge.***`"
+    # author = str(msgAuthor)
+    authorID = str(msgAuthor.id)
+    returnMSG = "`INCORRECT`\n`I do not recognize command you tried to use`"
+    boolcheck = leaderCheck(authorID)
 
-    if lowerMSG[1] == 'r':
-        if lowerMSG[2] == 'e':
-            if lowerMSG[3] == 's':
-                if lowerMSG[4] == 'e':
-                    if lowerMSG[5] == 't':
-                        if lowerMSG[6] == ' ':
-                            for admin in currentadmins():
-                                if str(author) == str(admin):
-                                    boolcheck = True
-                            if boolcheck:
-                                returnmsg = resetcommand(message, GetAllChallengersFromJson())
-                            else:
-                                returnmsg = "`New person detected!`\n`New profile made and saved`"
+    if giveCheck(lowerMSG):
+        if boolcheck:
+            returnMSG = giveCommand(message, GetAllChallengersFromJson())
+        else:
+            returnMSG = "`You are not Authorized to use this command!`\n" \
+                        "`<@&700735818268147723> or <@&700737181580525659> " \
+                        "could you investigate and give out the badge.`"
+    if resetCheck(lowerMSG):
+        for mod in currentMods():
+            if authorID == mod:
+                boolcheck = True
+                if boolcheck:
+                    returnMSG = resetcommand(message, GetAllChallengersFromJson())
+                else:
+                    returnMSG = "`New person detected!`\n`New profile made and saved`"
 
-    if lowerMSG[1] == 'j':
-        if lowerMSG[2] == 'o':
-            if lowerMSG[3] == 'i':
-                if lowerMSG[4] == 'n':
-                    if Join(author, GetAllChallengersFromJson()):
-                        returnmsg = "`You are already in the list!`"
-                    else:
-                        returnmsg = "`New person detected!`\n`New profile made and saved`"
+    if joinCheck(lowerMSG):
+        if joinCommand(msgAuthor, GetAllChallengersFromJson()):
+            returnMSG = "`You are already in the list!`"
+        else:
+            returnMSG = "`New profile made and saved`"
 
-    if lowerMSG[1] == 's':
-        if lowerMSG[2] == 'c':
-            if lowerMSG[3] == 'o':
-                if lowerMSG[4] == 'r':
-                    if lowerMSG[5] == 'e':
-                        returnmsg = ScoreCommand(author, message)
+    if eliteFourCheck(lowerMSG):
+        returnMSG = eliteFourCommand(authorID, GetAllChallengersFromJson())
 
-    if lowerMSG[1] == 'c':
-        if lowerMSG[2] == 'o':
-            if lowerMSG[3] == 'm':
-                if lowerMSG[4] == 'm':
-                    if lowerMSG[5] == 'a':
-                        if lowerMSG[6] == 'n':
-                            if lowerMSG[7] == 'd':
-                                if lowerMSG[8] == 's':
-                                    returnmsg = "commands are: `!help`, `!commands`, `!score`, `!give`, `!reset`, " \
-                                                "`!join`, coin, ping\n"\
-                                                "`!join` | makes a profile to track your badges, every new person " \
-                                                "hass to do this\n" \
-                                                "`!give` | gives the user a badge only gym leaders can use this" \
-                                                "`!give Rishino#5321 water`\n"\
-                                                "`!score` | shows the user's badges earned" \
-                                                "`!score` or `!score Rishino#5321` or `!score Rishino#5321 water`\n" \
-                                                "`!reset` | resets the stats of a person " \
-                                                "`!reset Rishino#5321 all` or `!reset Rishino#5321 e4`\n"\
-                                                "*`I'm still in beta, so errors may occur(keep a mental note of " \
-                                                "badges you earned)`*"
-    if lowerMSG[1] == 'h':
-        if lowerMSG[2] == 'e':
-            if lowerMSG[3] == 'l':
-                if lowerMSG[4] == 'p':
-                    returnmsg = "commands are: `!help`, `!commands`, `!score`, `!give`, `!reset`, " \
-                                "`!join`, coin, ping\n" \
-                                "`!join` | makes a profile to track your badges, every new person " \
-                                "hass to do this\n" \
-                                "`!give` | gives the user a badge only gym leaders can use this" \
-                                "`!give Rishino#5321 water`\n" \
-                                "`!score` | shows the user's badges earned" \
-                                "`!score` or `!score Rishino#5321` or `!score Rishino#5321 water`\n" \
-                                "`!reset` | resets the stats of a person " \
-                                "`!reset Rishino#5321 all` or `!reset Rishino#5321 e4`\n"\
-                                "*`I'm still in beta, so errors may occur(keep a mental note of badges you earned)`*"
+    if champCheck(lowerMSG):
+        returnMSG = champCommand(authorID, GetAllChallengersFromJson())
 
-    return returnmsg
+    if scoreCheck(lowerMSG):
+        returnMSG = ScoreCommand(msgAuthor, message)
+
+    if helpCheck(lowerMSG):
+        returnMSG = "commands are: " \
+                    "`!help`, `!commands`, `!score`, `!give`, `!reset`, `!join`," \
+                    "`!champ`,`!e4`, coin, ping, and my favourite `bot!`\n" \
+                    "`!join` | makes a profile to track your badges, every new person hass to do this\n" \
+                    "`!give` | gives the user a badge only gym leaders can use this" \
+                    "`!give ||@User or there ID|| ||The Badge Name||`\n" \
+                    "`!score` | shows the user's badges earned" \
+                    "`!score` or !score ||@User or there ID||" \
+                    " optional !score ||@User or there ID|| ||The Badge Name||`\n" \
+                    "`!reset` | resets the stats of a person " \
+                    "!reset ||@User or there ID|| ||all or e4||\n" \
+                    "`!champ` | pings the current champ for a challenge\n" \
+                    "`!e4` | pings the current champ for a challenge\n" \
+                    "*`I'm still in beta, so errors may occur(keep a mental note of badges you earned)`*"
+
+    return returnMSG
 
 
-def currentadmins() -> list:
-    adminlist = ["iMissKecleon#8097", "Cryptidwitch#8354", "Bubblesaur#2996", "Rishino#5321", "Ed-Boy24#2424"]
-    return adminlist
+def currentMods() -> list:
+    modlist = ["450849016536629276", "659970441263185921", "329899029372731393",
+               "98475932624371712", "575525936368451594"]
+    return modlist
 
 
-def currentleaders() -> list:
-    leaderslist = ["iMissKecleon#8097", "Honest | The Uchiha 🧞♂#7865", "Cryptidwitch#8354", "Bubblesaur#2996",
-                   "Rishino#5321", "Ed-Boy24#2424", "『 Kyom 』#0858", "Socktapus#0036", "Drew07#7032", "Vyoru#0001",
-                   "Leonidas#0888", "Owl#1095", "Socktapus#0036"]
+def currentLeaders() -> list:
+    leaderslist = ["450849016536629276", "Honest | The Uchiha 🧞♂#7865",
+                   "Cryptidwitch#8354", "Bubblesaur#2996", "Ed-Boy24#2424",
+                   "『 Kyom 』#0858", "Socktapus#0036", "Drew07#7032", "Vyoru#0001", "Leonidas#0888",
+                   "Owl#1095", "Socktapus#0036", "98475932624371712"]
     return leaderslist
 
 
-def currentbadges() -> list:
-    badgeslist = ["dragon", "electric", "fairy", "fighting", "fire", "grass", "poison", "water", "e4"]
+def currentBadges() -> list:
+    badgeslist = ["dragon", "electric", "fairy", "fighting", "fire", "grass", "poison", "water", "e4", "champion"]
     return badgeslist
 
 
-def resetlist() -> list:
+def resetList() -> list:
     resetreturnlist = ["all", "e4"]
     return resetreturnlist
 
 
-def givelistofuserstats(user) -> list:
+def giveListOfUserStats(user) -> list:
     badgeslist = []
     with open('badges.json') as jsonData:
         data = json.load(jsonData)
         challengers = dict()
 
-        for userdatatogive in data['challengers']:
-            name = userdatatogive['name']
-            userdatatogive = userdatatogive['userstats']
-            challengers[name] = userdatatogive
-        badgelist = currentbadges()
+        for userData in data['challengers']:
+            userid = userData['userid']
+            userData = userData['userstats']
+            challengers[userid] = userData
+
+        badgelist = currentBadges()
         for i in range(len(badgelist)):
             if badgelist[i] == "e4":
-                badgeslist.append(challengers[str(user)]['E4'])
+                badgeslist.append(challengers[user]['E4'])
             else:
-                badgeslist.append(challengers[str(user)][badgelist[i]])
+                badgeslist.append(challengers[user][badgelist[i]])
     return badgeslist
 
 
-def scorebadge(user, badge) -> str:
+def badgeData(user, badge) -> str:
+    badgeresult = ""
     with open('badges.json') as jsonData:
         data = json.load(jsonData)
-        challengers = dict()
 
-        for userdatatogive in data['challengers']:
-            name = userdatatogive['name']
-            userdatatogive = userdatatogive['userstats']
-            challengers[name] = userdatatogive
+        for userData in data['challengers']:
+            userID = userData['userid']
+            userDataID = str(userID)
+            if userDataID == user:
+                badgeresult = userData['userstats'][badge]
 
-    badgeresult = challengers[str(user)][str(badge.lower())]
     if badgeresult == "false":
         returnmsg = "`" + user + " did not beat the " + badge + " gym !`"
     else:
@@ -230,26 +206,27 @@ def badges(user) -> str:
         data = json.load(jsonData)
         challengers = dict()
 
-        for badgedata in data['challengers']:
-            name = badgedata['name']
-            allbadgedata = badgedata['userstats']
-            challengers[name] = allbadgedata
-        badgelist = currentbadges()
+        for userData in data['challengers']:
+            userid = userData['userid']
+            userData = userData['userstats']
+            challengers[userid] = userData
+
+        badgelist = currentBadges()
         for i in range(len(badgelist)):
             if badgelist[i] == "e4":
-                badgeslist.append(challengers[str(user)]['E4'])
+                badgeslist.append(challengers[user]['E4'])
             else:
-                badgeslist.append(challengers[str(user)][badgelist[i]])
+                badgeslist.append(challengers[user][badgelist[i]])
         for badge in badgeslist:
             if str(badge) != str("false"):
-                return badgesstr(str(user), badgeslist, currentbadges(), True)
-        return elitefour(str(challengers[str(user)]['E4']))
+                return badgeReplyStringData(user, badgeslist, currentBadges(), True, False, "")
+        return eliteFour(str(challengers[user]['E4']))
 
 
-def badgesstr(user, badgeslist, badgesnames, displaystylebool) -> str:
+def badgeReplyStringData(user, badgeslist, badgesnames, forScoreCommand, forGiveCommand, badgeGiven) -> str:
     returnstr = ""
-    if displaystylebool:
-        returnstr = returnstr + "This is ***" + user + "'s*** gyms progress:\n"
+    if forScoreCommand:
+        returnstr = returnstr + "This is <@" + user + ">'s gyms progress:\n"
         for x in range(8):
             if str(badgeslist[x]) == str('false'):
                 if x > 0:
@@ -262,14 +239,17 @@ def badgesstr(user, badgeslist, badgesnames, displaystylebool) -> str:
     else:
         returnstr = returnstr + "You need to beat the following gyms:\n"
         for x in range(8):
-            if str(badgeslist[x]) == str('false'):
-                returnstr = returnstr + badgesnames[x] + " gym\n"
+            if forGiveCommand:
+                if badgeGiven != badgesnames[x]:
+                    if str(badgeslist[x]) == str('false'):
+                        returnstr = returnstr + badgesnames[x] + " gym\n"
     return returnstr
 
 
-def elitefour(e4number) -> str:
+def eliteFour(e4number) -> str:
     if int(e4number) >= 4:
-        returnstr = "You've beaten ALL the elite fours Challenge the champ"
+        returnstr = "You've beaten ALL the elite four members!\n" \
+                    " You can go ahead and use `!champ` to challenge the champ"
     else:
         returnstr = "You've beaten " + e4number + "/4 e4 members"
     return returnstr
@@ -281,8 +261,8 @@ def GetAllChallengersFromJson() -> list:
         challengers = []
 
         for challengerdata in data['challengers']:
-            name = challengerdata['name']
-            challengers.append(str(name))
+            userid = challengerdata['userid']
+            challengers.append(str(userid))
 
     return challengers
 
@@ -305,17 +285,60 @@ def formattedjsonloader() -> str:
         data = json.load(jsonData)
         challengers = dict()
 
-        for formattedjsonbadges in data['challengers']:
-            name = formattedjsonbadges['name']
-            formattedjsonbadges = formattedjsonbadges['userstats']
-            challengers[name] = formattedjsonbadges
+        for userData in data['challengers']:
+            userid = userData['userid']
+            userData = userData['userstats']
+            challengers[userid] = userData
 
     return str(challengers)
 
 
-def Join(author, allchallengernames):
+def champCommand(author, allchallengernames):
+    userCheck = True
+    boolCheck = False
+
+    for challenger in allchallengernames:
+        if challenger == author:
+            userCheck = False
+
+    for i in range(9):
+        if giveListOfUserStats(author)[i] == 4:
+            boolCheck = True
+
+    if userCheck:
+        return "you are not a challenger do `!join` to enter"
+    else:
+        if boolCheck:
+            return "<@&700737737581527142> You have a new challenger!"
+        else:
+            return "You have to beat the E4 before you can challenge the champ"
+
+
+def eliteFourCommand(author, allchallengernames):
+    userCheck = True
+    boolCheck = True
+
+    for challenger in allchallengernames:
+        if challenger == author:
+            userCheck = False
+
+    for i in range(10):
+        if giveListOfUserStats(author)[i] == 'false':
+            boolCheck = False
+
+    if userCheck:
+        return "you are not a challenger do `!join` to enter"
+    else:
+        if boolCheck:
+            return "<@&700737181580525659> You have a new challenger!"
+        else:
+            return "You have to beat all gyms before you can start the E4"
+
+
+def joinCommand(author, allchallengernames):
     new_data = {
-        "name": str(author),
+        "userid": str(author.id),
+        "username": str(author.name),
         "userstats": {
             "dragon": "false",
             "electric": "false",
@@ -325,13 +348,14 @@ def Join(author, allchallengernames):
             "grass": "false",
             "poison": "false",
             "water": "false",
-            "E4": 0
+            "E4": 0,
+            "champion": "false"
         }
     }
 
     returnbool = False
-    for name in allchallengernames:
-        if name == str(author):
+    for userid in allchallengernames:
+        if userid == str(author.id):
             returnbool = True
             return returnbool
 
@@ -342,140 +366,140 @@ def Join(author, allchallengernames):
 def ScoreCommand(author, message):
     splitmsg = message.split()
     msgcount = len(splitmsg)
-    returnmsg = "`this person must not be in saved! maybe if they `!join` you can see theur stats`"
+    returnMSG = "this person must not be in saved!\n ask them to `!join` you can see their stats"
+
     if msgcount < 2:
-        if Join(author, GetAllChallengersFromJson()):
-            returnmsg = badges(author)
+        authorID = str(author.id)
+        if joinCommand(author, GetAllChallengersFromJson()):
+            return badges(authorID)
         else:
-            returnmsg = "***User not recognized!\n" \
-                        "***The correct format is: `!score user badge`\n" \
-                        "Example: `!score Rishino#5321 water`\n" \
-                        "You can see their username underneath their name on their profile\n" \
-                        "https://cdn.discordapp.com/attachments/1025013785548836875" \
-                        "/1071815928960000010/image.png"
+            return "***User not recognized!\n" \
+                   "***The correct format is: !give ||@User or there ID|| ||The Badge Name||\n" \
+                   "Example: `!score <@98475932624371712> water` | `!score 98475932624371712 water`"
     else:
+        authorID = splitmsg[1]
+
+        if usernameCheck(splitmsg[1]):
+            authorID = usernameSplit(splitmsg[1])
+
         if msgcount == 2:
-            for badge in currentbadges():
+            for badge in currentBadges():
                 if badge == splitmsg[1].lower():
-                    returnmsg = scorebadge(author, splitmsg[1].lower())
-                    break
+                    return badgeData(authorID, splitmsg[1].lower())
                 else:
                     for chall in GetAllChallengersFromJson():
-                        if chall == splitmsg[1]:
-                            returnmsg = badges(splitmsg[1])
-                            break
+                        if chall == authorID:
+                            return badges(authorID)
                         else:
-                            returnmsg = "***User not recognized!\n" \
-                                        "***The correct format is: `!score user badge`\n" \
-                                        "Example: `!score Rishino#5321 water`\n" \
-                                        "You can see their username underneath their name on their profile\n" \
-                                        "https://cdn.discordapp.com/attachments/1025013785548836875" \
-                                        "/1071815928960000010/image.png"
+                            returnMSG = "***User not recognized!\n" \
+                                        "***The correct format is: !give ||@User or there ID|| ||The Badge Name||\n" \
+                                        "Example: `!score <@98475932624371712> water` " \
+                                        "| `!score 98475932624371712 water`"
+
         else:
             if msgcount > 2:
                 for challuser in GetAllChallengersFromJson():
                     if challuser == splitmsg[1]:
-                        for badge in currentbadges():
+                        for badge in currentBadges():
                             if badge == str(splitmsg[2].lower()):
-                                returnmsg = scorebadge(challuser, badge)
-                                break
+                                return badgeData(challuser, badge)
                             else:
-                                returnmsg = "***badge not recognized!\n" \
-                                                "***The correct format is: `!score user badge`\n" \
-                                                "Example: `!score Rishino#5321 water`\n" \
-                                                "You can see their username underneath their name on their " \
-                                                "profile\n" \
-                                                "https://cdn.discordapp.com/attachments/1025013785548836875" \
-                                                "/1071815928960000010" \
-                                                "/image.png"
-                        break
+                                returnMSG = "***badge not recognized!\n" \
+                                            "***The correct format is: " \
+                                            "!give ||@User or there ID|| ||The Badge Name||\n" \
+                                            "Example: " \
+                                            "`!score <@98475932624371712> water` | `!score 98475932624371712 water`"
                     else:
-                        returnmsg = "***User not recognized!\n" \
-                                        "***The correct format is: `!score user badge`\n" \
-                                        "Example: `!score Rishino#5321 water`\n" \
-                                        "You can see their username underneath their name on their profile\n" \
-                                        "https://cdn.discordapp.com/attachments/1025013785548836875" \
-                                        "/1071815928960000010/image.png"
+                        returnMSG = "***User not recognized!\n" \
+                                    "***The correct format is: !give ||@User or there ID|| ||The Badge Name||\n" \
+                                    "Example: `!score <@98475932624371712> water` | `!score 98475932624371712 water`"
 
-    return returnmsg
+    return returnMSG
 
 
-def GiveCommand(message, allchallengernames):
+def giveCommand(message, allChallengers):
     splitmsg = message.split()
     inBadges = False
     inUsers = False
+    authorID = splitmsg[1]
 
-    if splitmsg[0].lower() == "!give":
-        for badge in currentbadges():
-            if splitmsg[2].lower() == badge:
-                inBadges = True
-                for name in allchallengernames:
-                    if splitmsg[1] == name:
-                        inUsers = True
+    if usernameCheck(splitmsg[1]):
+        authorID = usernameSplit(splitmsg[1])
+
+    if (len(splitmsg) > 2):
+        if splitmsg[0].lower() == "!give":
+            for badge in currentBadges():
+                if splitmsg[2].lower() == badge:
+                    inBadges = True
+                    for userid in allChallengers:
+                        if authorID == userid:
+                            inUsers = True
+
+    else:
+        return "`INCORRECT!\n`" \
+               "!give ||@User or there ID|| ||The Badge Name||"
 
     if not inBadges:
-        returnmsg = "***badge not recognized!\n" \
-                    "***The correct format is: `!give user badge`\n" \
-                    "Example: `!give Rishino#5321 poison badge`\n" \
-                    "You can see their username underneath their name on their profile\n" \
-                    "https://cdn.discordapp.com/attachments/1025013785548836875/1071815928960000010/image.png"
+        return "***badge not recognized!\n" \
+               "***The correct format is: !give ||@User or there ID|| ||The Badge Name||\n" \
+               "Example: `!give 98475932624371712 poison` or `!give <@98475932624371712> poison`\n"
     else:
         if not inUsers:
-            returnmsg = "***User not recognized!\n" \
-                        "***The correct format is: `!give user badge`\n" \
-                        "Example: `!give Rishino#5321 poison badge`\n" \
-                        "You can see their username underneath their name on their profile\n" \
-                        "https://cdn.discordapp.com/attachments/1025013785548836875/1071815928960000010/image.png"
+            return "***User not recognized!\n" \
+                   "***The correct format is: !give ||@User or there ID|| ||The Badge Name||\n" \
+                   "Example: `!give 98475932624371712 poison` or `!give <@98475932624371712> poison badge`\n"
         else:
-            returnmsg = give(splitmsg[1], splitmsg[2].lower())
-
-    return returnmsg
+            return give(authorID, splitmsg[2].lower())
 
 
 def resetcommand(message, allchallengernames):
     splitmsg = message.split()
     e4reset = False
     allreset = False
-    resettypelist = resetlist()
+    resettypelist = resetList()
+    authorID = splitmsg[1]
+
+    if usernameCheck(splitmsg[1]):
+        authorID = usernameSplit(splitmsg[1])
 
     if splitmsg[0].lower() == "!reset":
-        for name in allchallengernames:
-            if splitmsg[1] == name:
+        for userID in allchallengernames:
+            if authorID == userID:
                 for resettype in resettypelist:
                     if splitmsg[2].lower() == resettype:
-                        e4reset = True
-                    if splitmsg[2].lower() == resettype:
-                        allreset = True
+                        if resettype == "all":
+                            allreset = True
+                        if resettype == "e4":
+                            e4reset = True
 
     if not e4reset:
         if not allreset:
-            returnmsg = "***I don't understand who's data or what you are trying to reset***\n" \
-                        "Either the person is not in the list and has to use `!join` or the value being reset is " \
-                        "wrong\n" \
-                        "The correct format is: \n" \
-                        "`!reset user e4` or `!reset user all` Example: `!reset Rishino#5321 e4`\n" \
-                        "You can see their username underneath their name on their profile\n" \
-                        "https://cdn.discordapp.com/attachments/1025013785548836875/1071815928960000010/image.png"
+            return "***Command error***\n" \
+                   "Either the person is not in the list and has to use `!join` or the value being reset is wrong\n" \
+                   "The correct format is: \n" \
+                   "`!reset ||@User or there ID|| ||E4 or ALL||` Example: `!reset 98475932624371712 e4`"
         else:
-            reset(splitmsg[1], True)
-            returnmsg = "`All " + splitmsg[1] + "'s data has been reset!`"
+            reset(authorID, True)
+            return "All <@" + authorID + ">'s data has been reset!"
     else:
-        reset(splitmsg[1], False)
-        returnmsg = "`" + splitmsg[1] + "'s E4 data has been reset!`"
-
-    return returnmsg
+        reset(authorID, False)
+        return "<@" + authorID + ">'s E4 data has been reset!"
 
 
 def give(user, badge):
     beatenallgyms = True
     with open('badges.json') as jsonData:
         data = json.load(jsonData)
-        badgesx = currentbadges()
+        badgesx = currentBadges()
         for userData in data['challengers']:
-            name = userData['name']
-            if str(name) == str(user):
+            userID = userData['userid']
+            userName = userData['username']
+            userDataID = str(userID)
+            userDataName = str(userName)
+            if userDataID == user:
                 newData = {
-                    'name': str(name),
+                    'userid': userDataID,
+                    'username': userDataName,
                     'userstats': {
                         badgesx[0]: userData['userstats'][badgesx[0]],
                         badgesx[1]: userData['userstats'][badgesx[1]],
@@ -485,36 +509,46 @@ def give(user, badge):
                         badgesx[5]: userData['userstats'][badgesx[5]],
                         badgesx[6]: userData['userstats'][badgesx[6]],
                         badgesx[7]: userData['userstats'][badgesx[7]],
-                        'E4': userData['userstats']['E4']
+                        'E4': userData['userstats']['E4'],
+                        'champion': userData['userstats']['champion']
                     }
                 }
         if badge == 'e4':
-            if int(str(newData['userstats']['E4'])) >= 4:
+            if newData['userstats']['E4'] >= 4:
                 returnmsg = "`This player already is able to challenge the champion!`"
             else:
-                if allowedtogetE4(givelistofuserstats(user)):
-                    newData['userstats']['E4'] = int(str(newData['userstats']['E4'])) + 1
-                    if int(str(newData['userstats']['E4'])) >= 4:
+                if allowedtogetE4(giveListOfUserStats(user)):
+                    newData['userstats']['E4'] = newData['userstats']['E4'] + 1
+                    if newData['userstats']['E4'] >= 4:
                         returnmsg = "`This player is now able to challenge the champion!`"
                     else:
-                        returnmsg = "`This player has beaten " + newData['userstats']['E4'] + "/4 E4's`"
+                        e4data = str(newData['userstats']['E4'])
+                        returnmsg = "`This player has beaten " + e4data + "/4 E4's`"
                 else:
                     returnmsg = "`This player has not beaten 8 gyms yet`\n`ask them to do !score to see`"
         else:
-            if newData['userstats'][badge] == "true":
-                returnmsg = "`This player already beaten this gym!`\n" \
-                            + badgesstr(user, givelistofuserstats(user), currentbadges(), False)
-            else:
-                newData['userstats'][badge] = "true"
-                for x in range((len(givelistofuserstats(user))) - 1):
-                    if givelistofuserstats(user)[x] == "false":
-                        beatenallgyms = False
-                if beatenallgyms:
-                    returnmsg = "`This player has beaten ALL the gyms!`\n" \
-                                "<@" + user + "> `Please start preparing to battle the E4!`"
+            if badge != 'champion':
+                if newData['userstats'][badge] == "true":
+                    returnmsg = "`This player already beaten this gym!`"
                 else:
-                    returnmsg = "`" + user + " has beaten the " + badge + " gym!`\n" \
-                                + badgesstr(user, givelistofuserstats(user), currentbadges(), False)
+                    newData['userstats'][badge] = "true"
+                    for x in range((len(newData['userstats'])) - 2):
+                        if newData['userstats'][badgesx[x]] == "false":
+                            beatenallgyms = False
+                    if beatenallgyms:
+                        returnmsg = "`This player has beaten ALL the gyms!`\n" \
+                                    "<@" + user + "> `Please start preparing to battle the E4!`"
+                    else:
+                        returnmsg = "<@" + user + ">  has beaten the " + badge + " gym!\n" \
+                                    + badgeReplyStringData(user,
+                                                           giveListOfUserStats(user), currentBadges(), False, True,
+                                                           badge)
+            else:
+                if newData['userstats'][badge] == "true":
+                    returnmsg = "`This player is already Champion!`"
+                else:
+                    newData['userstats'][badge] = "true"
+                    returnmsg = "A NEW CHAMPION HAS TAKEN THE SEAT"
     delete(user)
     with open('badges.json', 'w') as file:
         file.write(json.dumps(data, indent=4))
@@ -526,12 +560,16 @@ def give(user, badge):
 def reset(user, resetbool):
     with open('badges.json') as jsonData:
         data = json.load(jsonData)
-        badgesx = currentbadges()
+        badgesx = currentBadges()
         for userData in data['challengers']:
-            name = userData['name']
-            if str(name) == str(user):
+            userID = userData['userid']
+            userName = userData['username']
+            userDataID = str(userID)
+            userDataName = str(userName)
+            if userDataID == user:
                 newData = {
-                    'name': str(name),
+                    'userid': userDataID,
+                    'username': userDataName,
                     'userstats': {
                         badgesx[0]: userData['userstats'][badgesx[0]],
                         badgesx[1]: userData['userstats'][badgesx[1]],
@@ -541,7 +579,8 @@ def reset(user, resetbool):
                         badgesx[5]: userData['userstats'][badgesx[5]],
                         badgesx[6]: userData['userstats'][badgesx[6]],
                         badgesx[7]: userData['userstats'][badgesx[7]],
-                        'E4': userData['userstats']['E4']
+                        'E4': userData['userstats']['E4'],
+                        'champion': userData['userstats']['champion']
                     }
                 }
         if not resetbool:
@@ -556,6 +595,7 @@ def reset(user, resetbool):
             newData['userstats'][badgesx[6]] = "false"
             newData['userstats'][badgesx[7]] = "false"
             newData['userstats']['E4'] = 0
+            newData['userstats']['champion'] = "false"
     delete(user)
     with open('badges.json', 'w') as file:
         file.write(json.dumps(data, indent=4))
@@ -566,16 +606,16 @@ def delete(user):
     with open('badges.json') as jsonData:
         data = json.load(jsonData)
     deleteindex = 0
-    for userDatatodelete in data['challengers']:
-        name = userDatatodelete['name']
-        if str(name) == str(user):
+    for userDataToDelete in data['challengers']:
+        userID = userDataToDelete['userid']
+        if userID == user:
             break
         deleteindex = deleteindex + 1
 
-    names_to_remove = [str(user)]
+    names_to_remove = [user]
 
     for element in data['challengers']:
-        if element['name'] in names_to_remove:
+        if element['userid'] in names_to_remove:
             data['challengers'].remove(element)
 
 
@@ -608,3 +648,140 @@ def convert(string):
     list1 = []
     list1[:0] = string
     return list1
+
+
+# region IF checks/ simple checks
+def channelCheck(channel) -> bool:
+    commandCheck = False
+    if channel == 'gym-challenge':
+        commandCheck = True
+    if channel == 'test':
+        commandCheck = True
+    if channel == 'gym-leader':
+        commandCheck = True
+    if channel == 'raid-chat-general':
+        commandCheck = True
+    return commandCheck
+
+
+def leaderCheck(authorID) -> bool:
+    commandCheck = False
+    for leader in currentLeaders():
+        if authorID == leader:
+            commandCheck = True
+    return commandCheck
+
+
+def giveCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'g':
+        if lowerCaseMSG[2] == 'i':
+            if lowerCaseMSG[3] == 'v':
+                if lowerCaseMSG[4] == 'e':
+                    if lowerCaseMSG[5] == ' ':
+                        commandCheck = True
+                        return commandCheck
+    return commandCheck
+
+
+def joinCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'j':
+        if lowerCaseMSG[2] == 'o':
+            if lowerCaseMSG[3] == 'i':
+                if lowerCaseMSG[4] == 'n':
+                    commandCheck = True
+                    return commandCheck
+    return commandCheck
+
+
+def resetCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'r':
+        if lowerCaseMSG[2] == 'e':
+            if lowerCaseMSG[3] == 's':
+                if lowerCaseMSG[4] == 'e':
+                    if lowerCaseMSG[5] == 't':
+                        if lowerCaseMSG[6] == ' ':
+                            commandCheck = True
+                            return commandCheck
+    return commandCheck
+
+
+def scoreCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 's':
+        if lowerCaseMSG[2] == 'c':
+            if lowerCaseMSG[3] == 'o':
+                if lowerCaseMSG[4] == 'r':
+                    if lowerCaseMSG[5] == 'e':
+                        commandCheck = True
+                        return commandCheck
+    return commandCheck
+
+
+def eliteFourCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'e':
+        if lowerCaseMSG[2] == '4':
+            commandCheck = True
+            return commandCheck
+    return commandCheck
+
+
+def champCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'c':
+        if lowerCaseMSG[2] == 'h':
+            if lowerCaseMSG[3] == 'a':
+                if lowerCaseMSG[4] == 'm':
+                    if lowerCaseMSG[5] == 'p':
+                        commandCheck = True
+                        return commandCheck
+    return commandCheck
+
+
+def helpCheck(lowerCaseMSG) -> bool:
+    commandCheck = False
+    if lowerCaseMSG[1] == 'c':
+        if lowerCaseMSG[2] == 'o':
+            if lowerCaseMSG[3] == 'm':
+                if lowerCaseMSG[4] == 'm':
+                    if lowerCaseMSG[5] == 'a':
+                        if lowerCaseMSG[6] == 'n':
+                            if lowerCaseMSG[7] == 'd':
+                                if lowerCaseMSG[8] == 's':
+                                    commandCheck = True
+                                    return commandCheck
+    if lowerCaseMSG[1] == 'h':
+        if lowerCaseMSG[2] == 'e':
+            if lowerCaseMSG[3] == 'l':
+                if lowerCaseMSG[4] == 'p':
+                    commandCheck = True
+                    return commandCheck
+    return commandCheck
+
+
+def usernameCheck(username) -> bool:
+    commandCheck = False
+    substring = "<@"
+
+    if substring in username:
+        commandCheck = True
+        return commandCheck
+    return commandCheck
+
+
+def usernameSplit(username) -> str:
+    userSplit1 = username.split("<@")
+    userSplit2 = userSplit1[1].split(">")
+    userID = userSplit2[0]
+    return userID
+
+
+# endregion
+def logUserMessage(author, message, channel):
+    username = str(author)
+    channel = str(channel)
+    # Debug printing
+    print(f"{username} said: '{message}' ({channel})")

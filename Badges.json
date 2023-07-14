@@ -1,63 +1,24 @@
 {
     "challengers": [
         {
-            "name": "Rishino#5321",
+            "userid": 0,
+            "username": "Rishino#5321",
             "userstats": {
                 "dragon": "false",
-                "electric": "false",
+                "electric": "true",
                 "fairy": "true",
                 "fighting": "false",
                 "fire": "false",
                 "grass": "false",
                 "poison": "false",
                 "water": "true",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Socktapus#0036",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "TimoVM#8253",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Cryptidwitch#8354",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "RogueIsDed#7264",
+            "userid": 0,
+            "username": "RogueIsDed#7264",
             "userstats": {
                 "dragon": "false",
                 "electric": "true",
@@ -67,11 +28,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "BaconMan#8322",
+            "userid": 0,
+            "username": "BaconMan#8322",
             "userstats": {
                 "dragon": "false",
                 "electric": "true",
@@ -81,11 +44,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "kyom",
+            "userid": 0,
+            "username": "kyom",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -95,11 +60,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Arcadian#6969",
+            "userid": 0,
+            "username": "Leonidas#0888",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -109,25 +76,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Rishino#5321",
-            "userstats": {
-                "dragon": "false",
-                "electric": "true",
-                "fairy": "true",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Leonidas#0888",
+            "userid": 0,
+            "username": "N3x Z0MB13S#1337",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -137,11 +92,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "N3x Z0MB13S#1337",
+            "userid": 0,
+            "username": "G.B. God#9912",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -151,11 +108,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "G.B. God#9912",
+            "userid": 0,
+            "username": "Vyoru#0001",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -165,67 +124,13 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Vyoru#0001",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "boogiefan87#8787",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "boogiefan87#8787",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "true",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "boogiefan87#8787",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "true",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "boogiefan87#8787",
+            "userid": 0,
+            "username": "boogiefan87#8787",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -235,11 +140,13 @@
                 "grass": "false",
                 "poison": "true",
                 "water": "true",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Francisco69#6966",
+            "userid": 0,
+            "username": "Donler#1864",
             "userstats": {
                 "dragon": "false",
                 "electric": "false",
@@ -249,119 +156,56 @@
                 "grass": "false",
                 "poison": "false",
                 "water": "false",
-                "E4": 0
+                "E4": 0,
+                "champion": "false"
             }
         },
         {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "true",
-                "grass": "false",
-                "poison": "false",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "true",
-                "grass": "false",
-                "poison": "true",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Donler#1864",
-            "userstats": {
-                "dragon": "false",
-                "electric": "false",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "false",
-                "grass": "false",
-                "poison": "false",
-                "water": "false",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "false",
-                "electric": "true",
-                "fairy": "false",
-                "fighting": "false",
-                "fire": "true",
-                "grass": "false",
-                "poison": "true",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "false",
-                "electric": "true",
-                "fairy": "false",
-                "fighting": "true",
-                "fire": "true",
-                "grass": "false",
-                "poison": "true",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
+            "userid": 0,
+            "username": "Francisco69#6966",
             "userstats": {
                 "dragon": "true",
                 "electric": "true",
-                "fairy": "false",
-                "fighting": "true",
-                "fire": "true",
-                "grass": "false",
-                "poison": "true",
-                "water": "true",
-                "E4": 0
-            }
-        },
-        {
-            "name": "Francisco69#6966",
-            "userstats": {
-                "dragon": "true",
-                "electric": "true",
-                "fairy": "false",
+                "fairy": "true",
                 "fighting": "true",
                 "fire": "true",
                 "grass": "true",
                 "poison": "true",
                 "water": "true",
-                "E4": 0
+                "E4": 4,
+                "champion": "true"
+            }
+        },
+        {
+            "userid": "408372966535987201",
+            "username": "Basher",
+            "userstats": {
+                "dragon": "false",
+                "electric": "false",
+                "fairy": "false",
+                "fighting": "false",
+                "fire": "false",
+                "grass": "false",
+                "poison": "false",
+                "water": "false",
+                "E4": 0,
+                "champion": "false"
+            }
+        },
+        {
+            "userid": "98475932624371712",
+            "username": "rishino",
+            "userstats": {
+                "dragon": "true",
+                "electric": "true",
+                "fairy": "true",
+                "fighting": "true",
+                "fire": "true",
+                "grass": "true",
+                "poison": "true",
+                "water": "false",
+                "E4": 3,
+                "champion": "false"
             }
         }
     ]
